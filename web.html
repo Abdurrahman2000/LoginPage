@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+
+        <title>Turning LED lights ON/OFF</title>
+        
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
+
+    </head>
+    <body>
+
+        <h1>Welcome! <br><br>You may control your room setting from here</h1>
+
+        <button id="lightOn">Turn Light On</button><br><br> 
+        <button id="lightOff">Turn Light Off</button><br><br>
+<button id="Lock room"> Locks doors</button><br><br>
+<button id="Unlock room">Unlocks doors </button><br><br>
+        <script>
+            
+        var socket = io();
+
+        document.getElementById('lightOn').onclick = function() {
+            
+            socket.emit('lights', { "status":"1" });
+                
+        };
+            
+        document.getElementById('lightOff').onclick = function(){
+               
+            socket.emit('lights', { "status":"0" });
+            
+        };
+        var socket = cc();
+
+        document.getElementById('Lock').onclick = function() {
+            
+            socket.emit('door', { "status":"3" });
+                
+        };
+            
+        document.getElementById('Unlock').onclick = function(){
+               
+            socket.emit('door', { "status":"4" });
+
+        }
+        </script>
+        
+    </body>
+</html>
